@@ -1,0 +1,12 @@
+[submodule "HDL/KFSDRAM"]
+	path = HDL/KFSDRAM
+	url = https://github.com/kitune-san/KFSDRAM.git
+[submodule "HDL/KF8253"]
+	path = HDL/KF8253
+	url = https://github.com/kitune-san/KF8253.git
+[submodule "HDL/KF8255"]
+	path = HDL/KF8255
+	url = https://github.com/kitune-san/KF8255.git
+[submodule "HDL/KF8259"]
+	path = HDL/KF8259
+	url = https://github.com/kitune-san/KF8259.git

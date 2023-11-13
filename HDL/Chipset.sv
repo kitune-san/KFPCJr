@@ -31,5 +31,22 @@ module CHIPSET (
         input           ALE
     );
 
+
+    BUS_ARBITER u_BUS_ARBITER
+    (
+        .clock                          (clock),
+        .cpu_clock_posedge              (cpu_clock_posedge),
+        .cpu_clock_negedge              (cpu_clock_negedge),
+        .RD_N                           (RD_N),
+        .WR_N                           (WR_N),
+        .IO_OR_M                        (IO_OR_M),
+        .DT_OR_R                        (DT_OR_R),
+        .ALE                            (ALE),
+        .IOW_N                          (),
+        .MEMR_N                         (),
+        .IOR_N                          (),
+        .MEMW_N                         ()
+    );
+
 endmodule
 

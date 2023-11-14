@@ -15,11 +15,29 @@ module BUS_ARBITER (
         input           DT_OR_R,
         input           ALE,
 
+        output          X_IO_OR_M,
+        output          R_OR_DT,
+
         output          IOW_N,
         output          MEMR_N,
         output          IOR_N,
         output          MEMW_N
     )
+
+    logic   Latchd_X_IO_OR_M;
+
+    always_ff @(posedge clock, posedge reset) begin
+        if (reset)
+           Latchd_X_IO_OR_M     <= 1'b1;
+        else if (ALE)
+            Latchd_X_IO_OR_M    <= IO_OR_M;
+        else
+            Latchd_X_IO_OR_M    <= Latchd_X_IO_OR_M;
+    end
+
+    assign  X_IO_OR_M   = (HOLDA) ? 1'b1 : Latchd_X_IO_OR_M;
+
+    assign  R_OR_DT     = ~DT_OR_R;
 
     logic   read_pulse;
 

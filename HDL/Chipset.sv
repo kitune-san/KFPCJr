@@ -42,6 +42,8 @@ module CHIPSET (
         .IO_OR_M                        (IO_OR_M),
         .DT_OR_R                        (DT_OR_R),
         .ALE                            (ALE),
+        .X_IO_OR_M                      (),
+        .R_OR_DT                        (),
         .IOW_N                          (),
         .MEMR_N                         (),
         .IOR_N                          (),

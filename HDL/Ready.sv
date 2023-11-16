@@ -12,10 +12,7 @@ module READY (
         input   logic           INTA_N,
 
         input   logic           IO_OR_M,
-        input   logic           DEN_N,
-
-        input   logic           IOW_N,
-        input   logic           IOR_N,
+        input   logic           IO_E,
 
         input   logic           VIDEO_READY,
         input   logic           SOUND_READY,
@@ -24,7 +21,6 @@ module READY (
         output  logic           RDY
     );
 
-    wire    IO_E    = ~((DEN_N | IOR_N) & IOW_N)
     logic   IO_E_N
     always_ff @(posedge clock, posedge reset) begin
         if (reset)

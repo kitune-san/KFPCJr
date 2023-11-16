@@ -37,6 +37,7 @@ module CHIPSET (
     logic   MEMR_N;
     logic   IOR_N;
     logic   MEMW_N;
+    logic   IO_E;
 
     BUS_ARBITER u_BUS_ARBITER (
         .clock                          (clock),
@@ -52,7 +53,8 @@ module CHIPSET (
         .IOW_N                          (IOW_N),
         .MEMR_N                         (MEMR_N),
         .IOR_N                          (IOR_N),
-        .MEMW_N                         (MEMW_N)
+        .MEMW_N                         (MEMW_N),
+        .IO_E                           (IO_E)
     );
 
     READY u_Ready (
@@ -62,9 +64,7 @@ module CHIPSET (
         .cpu_clock_negedge              (cpu_clock_negedge),
         .INTA_N                         (INTA_N),
         .IO_OR_M                        (IO_OR_M),
-        .DEN_N                          (DEN_N),
-        .IOW_N                          (IOW_N),
-        .IOR_N                          (IOR_N),
+        .IO_E                           (IO_E),
         .VIDEO_READY                    (),
         .SOUND_READY                    (),
         .EXT_READY                      (),

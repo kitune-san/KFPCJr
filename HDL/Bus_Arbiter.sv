@@ -13,6 +13,7 @@ module BUS_ARBITER (
         input   logic           WR_N,
         input   logic           IO_OR_M,
         input   logic           DT_OR_R,
+        input   logic           DEN_N,
         input   logic           ALE,
 
         output  logic           X_IO_OR_M,
@@ -21,7 +22,8 @@ module BUS_ARBITER (
         output  logic           IOW_N,
         output  logic           MEMR_N,
         output  logic           IOR_N,
-        output  logic           MEMW_N
+        output  logic           MEMW_N,
+        output  logic           IO_E
     )
 
     logic   Latchd_X_IO_OR_M;
@@ -97,6 +99,7 @@ module BUS_ARBITER (
     assign  MEMR_N  = HLDA |  IO_OR_M | read_ale_pulse;
     assign  IOR_N   = HLDA | ~IO_OR_M | read_pulse;
     assign  MEMW_N  = HLDA |  IO_OR_M | WR_N;
+    wire    IO_E    = ~((DEN_N | IOR_N) & IOW_N)
 
 endmodule;
 

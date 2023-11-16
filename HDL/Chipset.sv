@@ -95,7 +95,7 @@ module CHIPSET (
         .slave_program_n                (1'b1),
         .buffer_enable                  (interrupt_buffer_enable),
         .slave_program_or_enable_buffer (interrupt_sp_or_en),
-        .interrupt_acknowledge_n        (),
+        .interrupt_acknowledge_n        (INTA_N),
         .interrupt_to_cpu               (INTR),
         .interrupt_request              ()
     );

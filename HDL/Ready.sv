@@ -54,7 +54,7 @@ module READY (
         else if (cpu_clock_negedge)
             RDY     <= D_1 & Q_1;
         else
-            RDY     <= Q_1;
+            RDY     <= RDY;
     end
 
 endmodule

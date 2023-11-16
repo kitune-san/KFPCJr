@@ -56,6 +56,21 @@ module CHIPSET (
         .MEMW_N                         (MEMW_N)
     );
 
+    READY u_Ready (
+        .clock                          (clock),
+        .reset                          (reset),
+        .cpu_clock_posedge              (cpu_clock_posedge),
+        .cpu_clock_negedge              (cpu_clock_negedge),
+        .INTA_N                         (INTA_N),
+        .IO_OR_M                        (IO_OR_M),
+        .DEN_N                          (DEN_N),
+        .IOW_N                          (IOW_N),
+        .IOR_N                          (IOR_N),
+        .VIDEO_READY                    (),
+        .SOUND_READY                    (),
+        .EXT_READY                      (),
+        .RDY                            (RDY)
+    );
 
     logic           interrupt_controller_cs_n;
     logic   [7:0]   interrupt_bus_out_data;

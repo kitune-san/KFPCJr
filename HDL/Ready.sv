@@ -3,25 +3,25 @@
 // Written by kitune-san
 //
 module READY (
-        input           clock,
-        input           reset,
+        input   logic           clock,
+        input   logic           reset,
 
-        input           cpu_clock_posedge,
-        input           cpu_clock_negedge,
+        input   logic           cpu_clock_posedge,
+        input   logic           cpu_clock_negedge,
 
-        input           INTA_N,
+        input   logic           INTA_N,
 
-        input           IO_OR_M,
-        input           DEN_N,
+        input   logic           IO_OR_M,
+        input   logic           DEN_N,
 
-        input           IOW_N,
-        input           IOR_N,
+        input   logic           IOW_N,
+        input   logic           IOR_N,
 
-        input           VIDEO_READY,
-        input           SOUND_READY,
-        input           EXT_READY,
+        input   logic           VIDEO_READY,
+        input   logic           SOUND_READY,
+        input   logic           EXT_READY,
 
-        output          RDY
+        output  logic           RDY
     );
 
     wire    IO_E    = ~((DEN_N | IOR_N) & IOW_N)

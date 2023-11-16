@@ -3,25 +3,25 @@
 // Written by kitune-san
 //
 module BUS_ARBITER (
-        input           clock,
-        input           reset,
+        input   logic           clock,
+        input   logic           reset,
 
-        input           cpu_clock_posedge,
-        input           cpu_clock_negedge,
+        input   logic           cpu_clock_posedge,
+        input   logic           cpu_clock_negedge,
 
-        input           RD_N,
-        input           WR_N,
-        input           IO_OR_M,
-        input           DT_OR_R,
-        input           ALE,
+        input   logic           RD_N,
+        input   logic           WR_N,
+        input   logic           IO_OR_M,
+        input   logic           DT_OR_R,
+        input   logic           ALE,
 
-        output          X_IO_OR_M,
-        output          R_OR_DT,
+        output  logic           X_IO_OR_M,
+        output  logic           R_OR_DT,
 
-        output          IOW_N,
-        output          MEMR_N,
-        output          IOR_N,
-        output          MEMW_N
+        output  logic           IOW_N,
+        output  logic           MEMR_N,
+        output  logic           IOR_N,
+        output  logic           MEMW_N
     )
 
     logic   Latchd_X_IO_OR_M;

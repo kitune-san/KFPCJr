@@ -3,32 +3,32 @@
 // Written by kitune-san
 //
 module CHIPSET (
-        input           clock,
-        input           reset,
+        input   logic           clock,
+        input   logic           reset,
 
-        input           cpu_clock_posedge,
-        input           cpu_clock_negedge,
-        input           pclk_enable,
-        input           osc_enable,
+        input   logic           cpu_clock_posedge,
+        input   logic           cpu_clock_negedge,
+        input   logic           pclk_enable,
+        input   logic           osc_enable,
 
-        input   [19:0]  ADDRESS,
-        input   [7:0]   DATA_IN,
-        output  [7:0]   DATA_OUT,
+        input   logic   [19:0]  ADDRESS,
+        input   logic   [7:0]   DATA_IN,
+        output  logic   [7:0]   DATA_OUT,
 
-        output          RDY,
-        output          HOLD,
-        input           HLDA,
+        output  logic           RDY,
+        output  logic           HOLD,
+        input   logic           HLDA,
 
-        output          NMI,
-        output          INTR,
-        input           INTA_N,
+        output  logic           NMI,
+        output  logic           INTR,
+        input   logic           INTA_N,
 
-        input           RD_N,
-        input           WR_N,
-        input           IO_OR_M,
-        input           DT_OR_R,
-        input           DEN_N,
-        input           ALE
+        input   logic           RD_N,
+        input   logic           WR_N,
+        input   logic           IO_OR_M,
+        input   logic           DT_OR_R,
+        input   logic           DEN_N,
+        input   logic           ALE
     );
 
     logic   X_IO_OR_M;
@@ -38,8 +38,7 @@ module CHIPSET (
     logic   IOR_N;
     logic   MEMW_N;
 
-    BUS_ARBITER u_BUS_ARBITER
-    (
+    BUS_ARBITER u_BUS_ARBITER (
         .clock                          (clock),
         .cpu_clock_posedge              (cpu_clock_posedge),
         .cpu_clock_negedge              (cpu_clock_negedge),

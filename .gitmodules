@@ -10,3 +10,6 @@
 [submodule "HDL/KF8259"]
 	path = HDL/KF8259
 	url = https://github.com/kitune-san/KF8259.git
+[submodule "HDL/KF76489"]
+	path = HDL/KF76489
+	url = https://github.com/kitune-san/KF76489.git

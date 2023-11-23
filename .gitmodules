@@ -13,3 +13,6 @@
 [submodule "HDL/KF76489"]
 	path = HDL/KF76489
 	url = https://github.com/kitune-san/KF76489.git
+[submodule "HDL/KFPS2IRKB"]
+	path = HDL/KFPS2IRKB
+	url = https://github.com/kitune-san/KFPS2IRKB.git

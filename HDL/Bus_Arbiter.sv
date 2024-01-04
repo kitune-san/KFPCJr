@@ -3,28 +3,30 @@
 // Written by kitune-san
 //
 module BUS_ARBITER (
-        input   logic           clock,
-        input   logic           reset,
+    input   logic           clock,
+    input   logic           reset,
 
-        input   logic           cpu_clock_posedge,
-        input   logic           cpu_clock_negedge,
+    input   logic           cpu_clock_posedge,
+    input   logic           cpu_clock_negedge,
 
-        input   logic           RD_N,
-        input   logic           WR_N,
-        input   logic           IO_OR_M,
-        input   logic           DT_OR_R,
-        input   logic           DEN_N,
-        input   logic           ALE,
+    input   logic           HLDA,
 
-        output  logic           X_IO_OR_M,
-        output  logic           R_OR_DT,
+    input   logic           RD_N,
+    input   logic           WR_N,
+    input   logic           IO_OR_M,
+    input   logic           DT_OR_R,
+    input   logic           DEN_N,
+    input   logic           ALE,
 
-        output  logic           IOW_N,
-        output  logic           MEMR_N,
-        output  logic           IOR_N,
-        output  logic           MEMW_N,
-        output  logic           IO_E
-    )
+    output  logic           X_IO_OR_M,
+    output  logic           R_OR_DT,
+
+    output  logic           IOW_N,
+    output  logic           MEMR_N,
+    output  logic           IOR_N,
+    output  logic           MEMW_N,
+    output  logic           IO_E
+)
 
     logic   Latchd_X_IO_OR_M;
 
@@ -37,7 +39,7 @@ module BUS_ARBITER (
             Latchd_X_IO_OR_M    <= Latchd_X_IO_OR_M;
     end
 
-    assign  X_IO_OR_M   = (HOLDA) ? 1'b1 : Latchd_X_IO_OR_M;
+    assign  X_IO_OR_M   = (HLDA) ? 1'b1 : Latchd_X_IO_OR_M;
 
     assign  R_OR_DT     = ~DT_OR_R;
 

@@ -3,23 +3,23 @@
 // Written by kitune-san
 //
 module READY (
-        input   logic           clock,
-        input   logic           reset,
+    input   logic           clock,
+    input   logic           reset,
 
-        input   logic           cpu_clock_posedge,
-        input   logic           cpu_clock_negedge,
+    input   logic           cpu_clock_posedge,
+    input   logic           cpu_clock_negedge,
 
-        input   logic           INTA_N,
+    input   logic           INTA_N,
 
-        input   logic           IO_OR_M,
-        input   logic           IO_E,
+    input   logic           IO_OR_M,
+    input   logic           IO_E,
 
-        input   logic           VIDEO_READY,
-        input   logic           SOUND_READY,
-        input   logic           EXT_READY,
+    input   logic           VIDEO_READY,
+    input   logic           SOUND_READY,
+    input   logic           EXT_READY,
 
-        output  logic           RDY
-    );
+    output  logic           RDY
+);
 
     logic   IO_E_N
     always_ff @(posedge clock, posedge reset) begin

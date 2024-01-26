@@ -21,7 +21,7 @@ module READY (
     output  logic           RDY
 );
 
-    logic   IO_E_N
+    logic   IO_E_N;
     always_ff @(posedge clock, posedge reset) begin
         if (reset)
             IO_E_N  <= 1'b1;

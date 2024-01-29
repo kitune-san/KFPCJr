@@ -124,23 +124,23 @@ module PERIPHERALS #(
     assign  timer_2_clock   = timer_0_clock;
 
     KF8253 u_KF8253 (
-        clock               (clock),
-        reset               (reset),
-        chip_select_n       (timer_chip_select_n),
-        read_enable_n       (IOR_N),
-        write_enable_n      (IOW_N),
-        address             (ADDRESS[1:0]),
-        data_bus_in         (DATA_IN),
-        data_bus_out        (timer_data_out),
-        counter_0_clock     (timer_0_clock),
-        counter_0_gate      (1'b1),
-        counter_0_out       (timer_0_out),
-        counter_1_clock     (timer_1_clock),
-        counter_1_gate      (1'b1),
-        //counter_1_out       (),
-        counter_2_clock     (timer_2_clock),
-        counter_2_gate      (timer_2_gate),
-        counter_2_out       (timer_2_out)
+        .clock               (clock),
+        .reset               (reset),
+        .chip_select_n       (timer_chip_select_n),
+        .read_enable_n       (IOR_N),
+        .write_enable_n      (IOW_N),
+        .address             (ADDRESS[1:0]),
+        .data_bus_in         (DATA_IN),
+        .data_bus_out        (timer_data_out),
+        .counter_0_clock     (timer_0_clock),
+        .counter_0_gate      (1'b1),
+        .counter_0_out       (timer_0_out),
+        .counter_1_clock     (timer_1_clock),
+        .counter_1_gate      (1'b1),
+        //.counter_1_out       (),
+        .counter_2_clock     (timer_2_clock),
+        .counter_2_gate      (timer_2_gate),
+        .counter_2_out       (timer_2_out)
     );
 
     assign  timer_intr      = timer_0_out;

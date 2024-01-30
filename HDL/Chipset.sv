@@ -2,7 +2,10 @@
 // KFPCJr Chipset
 // Written by kitune-san
 //
-module CHIPSET (
+module CHIPSET #(
+    parameter kb_over_time          = 16'd1000,
+    parameter kb_bit_phase_cycle    = 16'd22000-16'd1   // 440us @ 50MHz
+) (
     input   logic           clock,
     input   logic           reset,
 
@@ -89,7 +92,7 @@ module CHIPSET (
     logic           interrupt_sp_or_en;
     logic           timer_intr;
 
-    interrupt_controller_cs_n   = ~(X_IO_OR_M & ({ADDRESS[9:3], 3'h0} == 10'h20));
+    assign  interrupt_controller_cs_n   = ~(X_IO_OR_M & ({ADDRESS[9:3], 3'h0} == 10'h20));
 
     KF8259 u_KF8259 (
         .clock                          (clock),
@@ -121,7 +124,10 @@ module CHIPSET (
 
     logic   [7:0]   peripherals_out_data;
     logic           peripherals_out_data_flag;
-    PERIPHERALS u_PERIPHERALS (
+    PERIPHERALS #(
+        .kb_over_time                   (kb_over_time),
+        .kb_bit_phase_cycle             (kb_bit_phase_cycle)
+    ) u_PERIPHERALS (
         .clock                          (clock),
         .reset                          (reset),
         .cpu_clock_posedge              (cpu_clock_posedge),

@@ -23,5 +23,6 @@ iverilog -o tb_peripherals.vvp \
     -I../HDL/KF8253/HDL/ \
     -I../HDL/KF8255/HDL/ \
     ./Peripherals_tb.sv -g2012 -DIVERILOG
+
 vvp tb_peripherals.vvp -v
 

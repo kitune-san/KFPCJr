@@ -232,7 +232,41 @@ module tb();
         TASK_IO_READ(20'h00040);
         TASK_IO_WRITE(20'h00040, 8'h55);
 
-        #(`TB_CYCLE * 1);
+        // Configure PPI mode: Port B output, Port C input.
+        TASK_IO_WRITE(20'h00063, 8'h99);
+
+        // Force distinguishable values to validate Port 62h bit4 source mux.
+        force u_Peripherals.timer_2_out = 1'b1;
+        force u_Peripherals.port_c_in[4] = 1'b0;
+
+        // PB3 = 0 => bit4 should come from port_c_in[4] (=0).
+        TASK_IO_WRITE(20'h00061, 8'h00);
+        TASK_IO_READ(20'h00062);
+        if (DATA_OUT[4] !== 1'b0) begin
+            $fatal(1, "Port 62h bit4 mux failed for PB3=0, DATA_OUT=0x%02h", DATA_OUT);
+        end
+
+        // PB3 = 1 => bit4 should come from timer_2_out (=1).
+        TASK_IO_WRITE(20'h00061, 8'h08);
+        TASK_IO_READ(20'h00062);
+        if (DATA_OUT[4] !== 1'b1) begin
+            $fatal(1, "Port 62h bit4 mux failed for PB3=1, DATA_OUT=0x%02h", DATA_OUT);
+        end
+
+        // Non-62h reads must remain stable.
+        TASK_IO_READ(20'h00060);
+        if (DATA_OUT !== 8'hFF) begin
+            $fatal(1, "Port 60h read regression, expected 0xFF got 0x%02h", DATA_OUT);
+        end
+        TASK_IO_READ(20'h00061);
+        if (DATA_OUT[3] !== 1'b1) begin
+            $fatal(1, "Port 61h read regression, expected PB3 high got 0x%02h", DATA_OUT);
+        end
+
+        release u_Peripherals.port_c_in[4];
+        release u_Peripherals.timer_2_out;
+
+        $display("Peripherals_tb: PASS");
 
         // End of simulation
 `ifdef IVERILOG

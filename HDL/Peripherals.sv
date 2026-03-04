@@ -274,6 +274,16 @@ module PERIPHERALS #(
     assign  port_c_in[0]    = keybd_latch;
     assign  port_c_in[6]    = keybd_in;
     assign  port_c_in[7]    = cable_connected_n;
+    wire            port62_bit4 = port_b_out[3] ? timer_2_out : port_c_in[4];
+    wire    [7:0]   port_c_live = {
+        cable_connected_n,
+        keybd_in,
+        timer_2_out,
+        port62_bit4,
+        port_c_in[3:1],
+        keybd_latch
+    };
+    wire    [7:0]   ppi_data_out_mux = (ADDRESS[1:0] == 2'b10) ? port_c_live : ppi_data_out;
 
     //
     // NMI
@@ -293,7 +303,7 @@ module PERIPHERALS #(
                 peripherals_data_out    = 1'b1;
             end
             else if (~ppi_chip_select_n) begin
-                DATA_OUT                = ppi_data_out;
+                DATA_OUT                = ppi_data_out_mux;
                 peripherals_data_out    = 1'b1;
             end
         end

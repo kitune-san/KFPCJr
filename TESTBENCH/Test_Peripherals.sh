@@ -1,6 +1,7 @@
 #!/bin/sh
+set -eu
 
-iverilog -o tb.vvp \
+iverilog -o tb_peripherals.vvp \
     ../HDL/KF8253/HDL/KF8253_Control_Logic.sv \
     ../HDL/KF8253/HDL/KF8253_Counter.sv \
     ../HDL/KF8253/HDL/KF8253.sv \
@@ -22,6 +23,6 @@ iverilog -o tb.vvp \
     -I../HDL/KF8253/HDL/ \
     -I../HDL/KF8255/HDL/ \
     ./Peripherals_tb.sv -g2012 -DIVERILOG
-vvp tb.vvp -v
-gtkwave tb.vcd
+
+vvp tb_peripherals.vvp -v
 

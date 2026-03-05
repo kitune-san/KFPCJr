@@ -246,6 +246,7 @@ module PERIPHERALS #(
         .reset              (reset),
         .device_clock       (kbd_ps2_device_clock),
         .device_data        (kbd_ps2_device_data),
+        .tx_allowed         (~keybd_latch),
         .ir_signal          (kbd_data)
     );
 
